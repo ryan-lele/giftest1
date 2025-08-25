@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XHGD会魔法的衣服</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f9f9f9;
+      font-family: "Comic Sans MS", "幼圆", sans-serif;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #ff6699;
+    }
+    #gifPlayer {
+      max-width: 100%;
+      max-height: 70vh;
+      display: none;
+    }
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+    }
+    button {
+      border: none;
+      background: #ffcc00;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ XHGD会魔法的衣服 ✨</h1>
+  <img id="gifPlayer" src="1.gif" alt="magic gif">
+  
+  <div class="controls">
+    <button id="playBtn">▶ 播放</button>
+    <button id="pauseBtn">⏸ 暂停</button>
+  </div>
+
+  <script>
+    const gif = document.getElementById('gifPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    let isPlaying = false;
+
+    playBtn.addEventListener('click', () => {
+      gif.style.display = "block";
+      // 刷新 gif 实现“重新播放”
+      gif.src = "1.gif?rand=" + new Date().getTime();
+      isPlaying = true;
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        gif.style.display = "none";  // 伪暂停：隐藏 gif
+        isPlaying = false;
+      }
+    });
+  </script>
+</body>
+</html>
